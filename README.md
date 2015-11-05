@@ -1,5 +1,7 @@
 # Passport-FIWARE-OAuth
 
+[![Build Status](https://build.conwet.fi.upm.es/jenkins/job/passport-fiware-oauth/badge/icon)](https://build.conwet.fi.upm.es/jenkins/job/passport-fiware-oauth/)
+
 [Passport](http://passportjs.org/) strategies for authenticating with [FIWARE](http://www.fiware.org/)
 using OAuth 2.0.
 
@@ -30,7 +32,7 @@ accepts these credentials and calls `done` providing a user, as well as
 `options` specifying a client ID, client secret, and callback URL.
 
 ```Javascript
-var FIWAREStrategy = require('passport-google-oauth').OAuth2Strategy;
+var FIWAREStrategy = require('passport-fiware-oauth').OAuth2Strategy;
 
 passport.use(new FIWAREStrategy({
     clientID: FIWARE_CLIENT_ID,
@@ -38,7 +40,7 @@ passport.use(new FIWAREStrategy({
     callbackURL: "http://127.0.0.1:3000/auth/fiware/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+    User.findOrCreate({ fiwareID: profile.id }, function (err, user) {
       return done(err, user);
     });
   }
