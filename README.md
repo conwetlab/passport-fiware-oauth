@@ -74,7 +74,7 @@ For a complete, working example, refer to the [OAuth 2.0 example](https://github
 ## Tests
 
     $ npm install --dev
-    $ make test
+    $ npm test
 
 ## Credits
 
