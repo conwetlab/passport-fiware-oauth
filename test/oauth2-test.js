@@ -1,7 +1,7 @@
 var vows = require('vows');
 var assert = require('assert');
 var util = require('util');
-var FIWAREStrategy = require('passport-fiware-oauth/oauth2');
+var FIWAREStrategy = require('../lib/passport-fiware-oauth/oauth2');
 
 var CLIENT_ID = 'ABC123';
 var CLIENT_SECRET = 'secret';
