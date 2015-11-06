@@ -24,8 +24,8 @@
     "passport-oauth": "^1.0.0"
   },
   "devDependencies": {
-    "vows": "0.4.x",
-    "istanbul": "0.8.x"
+    "vows": "0.8.x",
+    "istanbul": "0.4.x"
   },
   "scripts": {
     "test": "NODE_PATH=lib node_modules/.bin/istanbul cover --report cobertura --print none  node_modules/.bin/vows -- test/index-test.js test/oauth2-test.js  --xunit > xunit.xml"
