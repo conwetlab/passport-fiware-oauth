@@ -39,7 +39,8 @@ vows.describe('FIWAREStrategy').addBatch({
       
       // mock
       strategy._oauth2.get = function(url, accessToken, callback) {
-        var body = '{"organizations": [], "displayName": "Jared Hanson", \
+        var body = '{"organizations": [{ "id": "12", "name": "UPM", "roles": [{"id": "14", "name": "Admin"}] }], \
+"displayName": "Jared Hanson", \
 "app_id": "564", \
 "email": "example@fiware.org", \
 "id": "fiware-user-name", \
@@ -73,6 +74,10 @@ vows.describe('FIWAREStrategy').addBatch({
         assert.equal(profile.email, 'example@fiware.org');
         assert.equal(profile.roles[0].name, "provider");
         assert.equal(profile.roles[0].id, "106");
+        assert.equal(profile.organizations[0].id, "12");
+        assert.equal(profile.organizations[0].name, "UPM");
+        assert.equal(profile.organizations[0].roles[0].id, "14");
+        assert.equal(profile.organizations[0].roles[0].name, "Admin");
       },
       'should set raw property' : function(err, profile) {
         assert.isString(profile._raw);
