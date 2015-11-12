@@ -42,7 +42,8 @@ vows.describe('FIWAREStrategy').addBatch({
         var body = '{"organizations": [], "displayName": "Jared Hanson", \
 "app_id": "564", \
 "email": "example@fiware.org", \
-"id": "fiware-user-name"}';
+"id": "fiware-user-name", \
+"roles": [{"name": "provider", "id": "106"}]}';
         
         callback(null, body, undefined);
       }
@@ -70,6 +71,8 @@ vows.describe('FIWAREStrategy').addBatch({
         assert.equal(profile.id, 'fiware-user-name');
         assert.equal(profile.displayName, 'Jared Hanson');
         assert.equal(profile.email, 'example@fiware.org');
+        assert.equal(profile.roles[0].name, "provider");
+        assert.equal(profile.roles[0].id, "106");
       },
       'should set raw property' : function(err, profile) {
         assert.isString(profile._raw);
