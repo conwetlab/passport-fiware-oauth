@@ -72,6 +72,7 @@ vows.describe('FIWAREStrategy').addBatch({
         assert.equal(profile.id, 'fiware-user-name');
         assert.equal(profile.displayName, 'Jared Hanson');
         assert.equal(profile.email, 'example@fiware.org');
+        assert.equal(profile.appId, '564');
         assert.equal(profile.roles[0].name, "provider");
         assert.equal(profile.roles[0].id, "106");
         assert.equal(profile.organizations[0].id, "12");
