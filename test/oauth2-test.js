@@ -27,7 +27,21 @@ vows.describe('FIWAREStrategy').addBatch({
       assert.equal(strategy._oauth2._customHeaders['Authorization'], authHeaderValue);
     }
   },
-  
+
+  'strategy when providing the IdM host': {
+    topic: function() {
+      return new FIWAREStrategy({
+        clientID: CLIENT_ID,
+        clientSecret: CLIENT_SECRET,
+        serverURL: 'http://mycustomidm.com/'
+      },
+      function() {});
+    },
+
+    'should have changed the default host': function(strategy) {
+      assert.equal(strategy.serverURL, 'http://mycustomidm.com');
+    }
+  },
   
   'strategy when loading user profile': {
     topic: function() {
