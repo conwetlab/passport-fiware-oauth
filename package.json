@@ -1,6 +1,6 @@
 {
   "name": "passport-fiware-oauth",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "FIWARE (OAuth) authentication strategies for Passport.",
   "keywords": ["passport", "fiware", "auth", "authn", "authentication", "identity"],
   "repository": {
