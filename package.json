@@ -1,8 +1,15 @@
 {
   "name": "passport-fiware-oauth",
-  "version": "0.1.7",
+  "version": "1.0.0",
   "description": "FIWARE (OAuth) authentication strategies for Passport.",
-  "keywords": ["passport", "fiware", "auth", "authn", "authentication", "identity"],
+  "keywords": [
+    "passport",
+    "fiware",
+    "auth",
+    "authn",
+    "authentication",
+    "identity"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/conwetlab/passport-fiware-oauth.git"
@@ -14,10 +21,12 @@
     "name": "Aitor Magán",
     "email": "amagan@conwet.com"
   },
-  "licenses": [ {
-    "type": "MIT",
-    "url": "http://www.opensource.org/licenses/MIT" 
-  } ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
   "main": "./lib/passport-fiware-oauth",
   "dependencies": {
     "pkginfo": "0.3.x",
@@ -25,11 +34,14 @@
     "request": "^2.69.0"
   },
   "devDependencies": {
-    "vows": "0.8.x",
-    "istanbul": "0.4.x"
+    "jasmine": "^3.1.0",
+    "istanbul": "0.4.x",
+    "coveralls": "^3.0.0"
   },
   "scripts": {
-    "test": "NODE_PATH=lib node_modules/.bin/istanbul cover --report cobertura --print none  node_modules/.bin/vows -- test/index-test.js test/oauth2-test.js  --xunit > xunit.xml"
+    "test": "JASMINE_CONFIG_PATH=test/config/jasmine.json node_modules/.bin/istanbul cover --include-all-sources -x examples/**/*.js node_modules/.bin/jasmine"
   },
-  "engines": { "node": ">= 0.4.0" }
+  "engines": {
+    "node": ">= 0.4.0"
+  }
 }

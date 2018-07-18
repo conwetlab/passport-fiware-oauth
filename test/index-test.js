@@ -1,18 +1,14 @@
-var vows = require('vows');
-var assert = require('assert');
-var util = require('util');
-var fiware = require('../lib/passport-fiware-oauth/index');
+const fiware = require('../lib/passport-fiware-oauth/index');
 
 
-vows.describe('passport-fiware-oauth').addBatch({
+describe('passport-fiware-oauth', () => {
   
-  'module': {
-    'should report a version': function (x) {
-      assert.isString(fiware.version);
-    },
-    'should export OAuth 2.0 strategy': function (x) {
-      assert.isFunction(fiware.OAuth2Strategy);
-    },
-  },
+    it('should report a version', function () {
+      expect(typeof(fiware.version)).toBe("string");
+    });
+
+    it('should export OAuth 2.0 strategy', function () {
+      expect(typeof(fiware.OAuth2Strategy)).toBe("function")
+    });
   
-}).export(module);
+});
