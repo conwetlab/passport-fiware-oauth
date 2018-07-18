@@ -37,7 +37,8 @@ var FIWAREStrategy = require('passport-fiware-oauth').OAuth2Strategy;
 passport.use(new FIWAREStrategy({
     clientID: FIWARE_CLIENT_ID,
     clientSecret: FIWARE_CLIENT_SECRET,
-    callbackURL: "http://127.0.0.1:3000/auth/fiware/callback"
+    callbackURL: "http://127.0.0.1:3000/auth/fiware/callback",
+    isLegacy: false
   },
   function(accessToken, refreshToken, profile, done) {
     User.findOrCreate({ fiwareID: profile.id }, function (err, user) {
