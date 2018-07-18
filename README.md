@@ -1,6 +1,6 @@
 # Passport-FIWARE-OAuth
 
-[![Build Status](https://build.conwet.fi.upm.es/jenkins/job/passport-fiware-oauth/badge/icon)](https://build.conwet.fi.upm.es/jenkins/job/passport-fiware-oauth/)
+[![Build Status](https://travis-ci.org/conwetlab/passport-fiware-oauth.svg?branch=master)](https://travis-ci.org/conwetlab/passport-fiware-oauth) [![Coverage Status](https://coveralls.io/repos/github/conwetlab/passport-fiware-oauth/badge.svg?branch=master)](https://coveralls.io/github/conwetlab/passport-fiware-oauth?branch=master)
 
 [Passport](http://passportjs.org/) strategies for authenticating with [FIWARE](http://www.fiware.org/)
 using OAuth 2.0.
