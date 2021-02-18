@@ -1,6 +1,7 @@
 const assert = require('assert');
 const util = require('util');
 const proxyquire = require('proxyquire')
+const jwt = require('jsonwebtoken');
 
 const CLIENT_ID = 'ABC123';
 const CLIENT_SECRET = 'secret';
@@ -86,6 +87,66 @@ describe('FIWAREStrategy', () => {
                 done();
             };
             strategyP.userProfile('access-token', callback);
+        });
+
+        it ('should load user profile from JWT', (done) => {
+            const tokenContent = {
+                "displayName": "Francisco",
+                "roles": [
+                    {
+                        "id": "ddcb5f95-270f-46c5-8467-4c238d135ac8",
+                        "name": "admin"
+                    },
+                    {
+                        "id": "3832d309-08fb-403e-97ad-a93cf9f03df0",
+                        "name": "seller"
+                    }
+                    ],
+                "app_id": "19dd858c-328c-4642-93ab-da45e4d253ae",
+                "trusted_apps": [],
+                "isGravatarEnabled": false,
+                "id": "e0d30f0e-64d4-4e80-9c39-a6b26da28acf",
+                "authorization_decision": "",
+                "app_azf_domain": "",
+                "eidas_profile": {},
+                "attributes": {},
+                "shared_attributes": "",
+                "username": "fdelavega",
+                "email": "fdelavega@ficodes.com",
+                "image": "",
+                "gravatar": "",
+                "extra": "",
+                "type": "user",
+                "iat": Date.now(),
+                "exp": Date.now()
+            }
+            const secret = '281e126aa35c80f2';
+
+            const token = jwt.sign(tokenContent, secret);
+
+            let callback = (err, profile) => {
+                expect(err).toBeNull();
+                expect(profile.provider).toBe('fiware');
+                expect(profile.id).toBe('e0d30f0e-64d4-4e80-9c39-a6b26da28acf');
+                expect(profile.displayName).toBe('Francisco');
+                expect(profile.emails[0].value).toBe('fdelavega@ficodes.com');
+                expect(profile.appId).toBe('19dd858c-328c-4642-93ab-da45e4d253ae');
+                expect(profile.roles[0].name).toBe("admin");
+                expect(profile.roles[0].id).toBe("ddcb5f95-270f-46c5-8467-4c238d135ac8");
+                expect(profile.roles[1].name).toBe("seller");
+                expect(profile.roles[1].id).toBe("3832d309-08fb-403e-97ad-a93cf9f03df0");
+
+                expect(typeof(profile._raw)).toBe('string');
+                expect(typeof(profile._json)).toBe('object');
+                done();
+            };
+
+            let strategy = requiredRawStrategy({
+                clientID: CLIENT_ID,
+                clientSecret: CLIENT_SECRET,
+                key: secret
+            });
+            strategy.userProfile(token, callback);
         });
     });
 
