@@ -1,6 +1,6 @@
 # Passport-FIWARE-OAuth
 
-[![Build Status](https://travis-ci.org/conwetlab/passport-fiware-oauth.svg?branch=master)](https://travis-ci.org/conwetlab/passport-fiware-oauth) [![Coverage Status](https://coveralls.io/repos/github/conwetlab/passport-fiware-oauth/badge.svg?branch=master)](https://coveralls.io/github/conwetlab/passport-fiware-oauth?branch=master)
+[![Build Status](https://github.com/conwetlab/passport-fiware-oauth/workflows/Tests/badge.svg)](https://github.com/conwetlab/passport-fiware-oauth/actions/workflows/tests.yml) [![Coverage Status](https://coveralls.io/repos/github/conwetlab/passport-fiware-oauth/badge.svg?branch=master)](https://coveralls.io/github/conwetlab/passport-fiware-oauth?branch=master)
 
 [Passport](http://passportjs.org/) strategies for authenticating with [FIWARE](http://www.fiware.org/)
 using OAuth 2.0.
@@ -38,7 +38,7 @@ passport.use(new FIWAREStrategy({
     clientID: FIWARE_CLIENT_ID,
     clientSecret: FIWARE_CLIENT_SECRET,
     callbackURL: "http://127.0.0.1:3000/auth/fiware/callback",
-    isLegacy: false
+    key: '281e126aa35c80f2'
   },
   function(accessToken, refreshToken, profile, done) {
     User.findOrCreate({ fiwareID: profile.id }, function (err, user) {
@@ -81,6 +81,7 @@ For a complete, working example, refer to the [OAuth 2.0 example](https://github
 
   - [Jared Hanson](https://github.com/jaredhanson)
   - [Aitor Magan](https://github.com/aitormagan)
+  - [Francisco de la Vega](https://github.com/fdelavega)
 
 ## License
 
