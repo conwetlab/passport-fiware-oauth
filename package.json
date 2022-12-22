@@ -32,7 +32,7 @@
     "pkginfo": "0.3.x",
     "passport-oauth": "^1.0.0",
     "request": "^2.69.0",
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^9.0.0"
   },
   "devDependencies": {
     "jasmine": "^3.1.0",
